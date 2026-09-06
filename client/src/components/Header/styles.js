@@ -17,5 +17,4 @@ export const linkStyle = {
   fontWeight: 500,
   fontSize: "1.389vw",
   lineHeight: "130%",
-  color: "#282828",
 };

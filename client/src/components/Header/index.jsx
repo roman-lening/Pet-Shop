@@ -7,33 +7,86 @@ import Basket from "../../assets/basket.svg";
 import { bigBoxStyle } from "./styles";
 import { smallBoxStyle } from "./styles";
 import { linkStyle } from "./styles";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <AppBar position="static">
       <Box sx={bigBoxStyle}>
+        <NavLink to="/">
+          <img
+            src={Logo}
+            alt="Logo"
+            style={{
+              width: "4.861vw",
+            }}
+          />
+        </NavLink>
+        <Box sx={smallBoxStyle}>
+          <NavLink to="/" end>
+            {({ isActive }) => (
+              <Button>
+                <Typography
+                  sx={{
+                    ...linkStyle,
+                    color: isActive ? "#0d50ff" : "#282828",
+                  }}
+                >
+                  Main Page
+                </Typography>
+              </Button>
+            )}
+          </NavLink>
+          <NavLink to="/categories">
+            {({ isActive }) => (
+              <Button>
+                <Typography
+                  sx={{
+                    ...linkStyle,
+                    color: isActive ? "#0d50ff" : "#282828",
+                  }}
+                >
+                  Categories
+                </Typography>
+              </Button>
+            )}
+          </NavLink>
+          <NavLink to="/products">
+            {({ isActive }) => (
+              <Button>
+                <Typography
+                  sx={{
+                    ...linkStyle,
+                    color: isActive ? "#0d50ff" : "#282828",
+                  }}
+                >
+                  All products
+                </Typography>
+              </Button>
+            )}
+          </NavLink>
+          <NavLink to="/sales">
+            {({ isActive }) => (
+              <Button>
+                <Typography
+                  sx={{
+                    ...linkStyle,
+                    color: isActive ? "#0d50ff" : "#282828",
+                  }}
+                >
+                  All sales
+                </Typography>
+              </Button>
+            )}
+          </NavLink>
+        </Box>
         <img
-          src={Logo}
-          alt="Logo"
+          src={Basket}
+          alt="Basket"
           style={{
-            width: "4.861vw",
+            width: "3.333vw",
           }}
         />
-        <Box sx={smallBoxStyle}>
-          <Button>
-            <Typography sx={linkStyle}>Main Page</Typography>
-          </Button>
-          <Button>
-            <Typography sx={linkStyle}>Categories</Typography>
-          </Button>
-          <Button>
-            <Typography sx={linkStyle}>All products</Typography>
-          </Button>
-          <Button>
-            <Typography sx={linkStyle}>All sales</Typography>
-          </Button>
-        </Box>
-        <img src={Basket} alt="Basket" style={{ width: "3.333vw" }} />
       </Box>
     </AppBar>
   );
