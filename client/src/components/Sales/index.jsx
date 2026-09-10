@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSales } from "../../redux/slices/salesSlice.js";
-import Sale from "../Sale/index.jsx";
+import Product from "../Product/index.jsx";
 import styles from "./styles.module.css";
 import {
   containerStyle,
@@ -54,7 +54,7 @@ function Sales() {
           )
           .slice(0, 4)
           .map((product) => (
-            <Sale key={product.id} product={product} />
+            <Product key={product.id} product={product} />
           ))}
       </Box>
     </Box>

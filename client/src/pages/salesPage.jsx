@@ -10,7 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import Sale from "../components/Sale";
+import Product from "../components/Product"
 import { getSales } from "../redux/slices/salesSlice.js";
 import styles from "../components/Sales/styles.module.css";
 import {
@@ -128,7 +128,7 @@ function SalesPage() {
         </Box>
         <Grid sx={gridStyle}>
           {sortedSales.map((product) => (
-            <Sale key={product.id} product={product} />
+            <Product key={product.id} product={product} />
           ))}
         </Grid>
       </Box>
