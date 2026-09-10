@@ -36,7 +36,7 @@ export const dividerStyle = {
 export const buttonStyle = {
   border: "1px solid #ddd",
   borderRadius: "0.417vw",
-  width: "9.861vw",
+  // width: "9.861vw",
   height: "auto",
   fontWeight: 500,
   fontSize: "1.111vw",

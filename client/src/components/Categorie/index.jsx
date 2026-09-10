@@ -5,7 +5,11 @@ import { cardStyle, imageStyle, titleStyle } from "./style.js";
 
 function Categorie({ categorie }) {
   return (
-    <Box component={NavLink} to="/" sx={cardStyle}>
+    <Box
+      component={NavLink}
+      to={`/productGroup/${categorie.id}`}
+      sx={cardStyle}
+    >
       <img
         src={`http://localhost:3333${categorie.image}`}
         alt={categorie.title}

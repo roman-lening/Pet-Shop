@@ -92,7 +92,6 @@ export const btnStyle = {
   opacity: 0,
   visibility: "hidden",
   transition: "opacity 0.3s ease, visibility 0.3s ease",
-  background: "#0d50ff",
   borderRadius: "0.417vw",
   padding: "1.111vw 2.222vw",
   width: "19.722vw",
@@ -101,7 +100,7 @@ export const btnStyle = {
   fontSize: "1.389vw",
   lineHeight: "130%",
   textAlign: "center",
-  color: "#fff",
+ 
   textTransform: "none",
   position: "absolute",
   bottom: "1.111vw",

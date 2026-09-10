@@ -14,6 +14,7 @@ import {
   btnStyle,
 } from "./styles.js";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function Product({ product }) {
   const hasDiscount =
@@ -25,10 +26,13 @@ function Product({ product }) {
       )
     : 0;
 
+  const [addedBtn, setAddedBtn] = useState(false);
+
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
     console.log("click");
+    setAddedBtn(true);
   }
 
   return (
@@ -53,16 +57,19 @@ function Product({ product }) {
           <Typography sx={discountStyle}>-{discount}%</Typography>
         )}
         <Button
+          disabled={addedBtn}
           onClick={handleClick}
           className="addButton"
           sx={{
             ...btnStyle,
+            color: addedBtn ? "black" : "white",
+            background: addedBtn ? "#fff" : "#0d50ff",
             "&:hover": {
-              background: "#282828",
+              background: addedBtn ? "#fff" : "#282828",
             },
           }}
         >
-          Add to cart
+          {addedBtn ? "Added" : "Add to cart"}
         </Button>
       </Box>
       <Box sx={infoStyle}>
