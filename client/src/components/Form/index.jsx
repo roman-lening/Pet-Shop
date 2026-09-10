@@ -33,7 +33,6 @@ function Form() {
       .post("http://localhost:3333/sale/send", formData)
       .then((response) => {
         console.log(response.data);
-
         setName("");
         setPhone("");
         setEmail("");
@@ -46,7 +45,6 @@ function Form() {
   return (
     <Box sx={boxStyle}>
       <Typography sx={titleStyle}>5% off on the first order</Typography>
-
       <Box sx={containerStyle}>
         <img
           src={Dogs}
@@ -55,7 +53,6 @@ function Form() {
             width: "54.375vw",
           }}
         />
-
         <Box sx={formStyle} component="form" onSubmit={handleSubmit}>
           <Box sx={fieldGroupStyle}>
             <TextField
@@ -67,7 +64,6 @@ function Form() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-
             <TextField
               placeholder="Phone number"
               variant="outlined"
@@ -76,7 +72,6 @@ function Form() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
-
             <TextField
               placeholder="Email"
               variant="outlined"
@@ -87,7 +82,6 @@ function Form() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Box>
-
           <Button sx={buttonStyle} type="submit">
             Get a discount
           </Button>

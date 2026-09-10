@@ -4,12 +4,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-
 import { NavLink } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-
 import Categorie from "../components/Categorie";
 import { getCategories } from "../redux/slices/categoriesSlice";
 import styles from "../components/Categories/styles.module.css";
@@ -27,7 +24,6 @@ import {
 
 function CategoriesPage() {
   const dispatch = useDispatch();
-
   const { categories, loading, error } = useSelector(
     (state) => state.categories,
   );
@@ -41,7 +37,6 @@ function CategoriesPage() {
   if (loading) {
     return <span className={styles.loader} />;
   }
-
   if (error) {
     return <span className={styles.error} />;
   }
@@ -52,17 +47,13 @@ function CategoriesPage() {
         <NavLink to="/">
           <Button sx={breadcrumbButtonStyle}>Main page</Button>
         </NavLink>
-
         <Divider sx={dividerStyle} />
-
         <NavLink to="/categories">
           <Button sx={activeBreadcrumbButtonStyle}>Categories</Button>
         </NavLink>
       </Breadcrumbs>
-
       <Box sx={categoriesContentStyle}>
         <Typography sx={categoriesTitleStyle}>Categories</Typography>
-
         <Grid sx={gridStyle}>
           {categories.map((categorie) => (
             <Categorie key={categorie.id} categorie={categorie} />

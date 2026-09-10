@@ -4,7 +4,6 @@ export const cardStyle = {
   gap: "1.111vw",
   alignItems: "center",
   width: "21.944vw",
-  height: "27.222vw",
 };
 
 export const imageStyle = {
