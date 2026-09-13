@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Dogs from "../../assets/dogsForm.svg";
+import axios from "axios";
 import {
   boxStyle,
   titleStyle,
@@ -13,12 +14,12 @@ import {
   buttonStyle,
 } from "./styles.js";
 import { useState } from "react";
-import axios from "axios";
 
 function Form() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [btn, setBtn] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,9 +34,11 @@ function Form() {
       .post("http://localhost:3333/sale/send", formData)
       .then((response) => {
         console.log(response.data);
+        console.log(formData);
         setName("");
         setPhone("");
         setEmail("");
+        setBtn(true);
       })
       .catch((error) => {
         console.error(error);
@@ -82,8 +85,18 @@ function Form() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Box>
-          <Button sx={buttonStyle} type="submit">
-            Get a discount
+          <Button
+            sx={{
+              ...buttonStyle,
+              color: btn ? "#0d50ff" : "#282828",
+              "&:hover": {
+                background: btn ? "#fff" : "#282828",
+                color: btn ? "#282828" : "#fff",
+              },
+            }}
+            type="submit"
+          >
+            {btn ? "Request Submitted" : "Get a discount"}
           </Button>
         </Box>
       </Box>

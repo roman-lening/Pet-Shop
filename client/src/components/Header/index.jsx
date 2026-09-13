@@ -4,12 +4,12 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Logo from "../../assets/logo.svg";
 import Basket from "../../assets/basket.svg";
-import { bigBoxStyle } from "./styles";
-import { smallBoxStyle } from "./styles";
-import { linkStyle } from "./styles";
+import { smallBoxStyle, itemsBusket, bigBoxStyle, linkStyle } from "./styles";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const countItems = useSelector((state) => state.items.countitems);
   return (
     <AppBar position="static">
       <Box sx={bigBoxStyle}>
@@ -80,13 +80,17 @@ function Header() {
             )}
           </NavLink>
         </Box>
-        <img
-          src={Basket}
-          alt="Basket"
-          style={{
-            width: "3.333vw",
-          }}
-        />
+        <NavLink to="/basketPage">
+          <img
+            src={Basket}
+            alt="Basket"
+            style={{
+              width: "3.333vw",
+              position: "relative",
+            }}
+          />
+          <Typography sx={itemsBusket}>{countItems}</Typography>
+        </NavLink>
       </Box>
     </AppBar>
   );

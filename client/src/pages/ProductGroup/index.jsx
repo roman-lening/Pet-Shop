@@ -61,20 +61,44 @@ function ProductGroup() {
     return <span className={styles.error} />;
   }
 
+  const getCurrentPrice = (product) => {
+    return product.discont_price ?? product.price;
+  };
+
   const filteredSales = sales.filter(
     (product) => product.categoryId === Number(id),
   );
 
-  const sortedSales = [...filteredSales].sort((a, b) => {
+  const filterSales = filteredSales.filter((product) => {
+    const currentPrice = getCurrentPrice(product);
+
+    if (priceFrom && currentPrice < Number(priceFrom)) {
+      return false;
+    }
+
+    if (priceTo && currentPrice > Number(priceTo)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const sortedSales = [...filterSales].sort((a, b) => {
+    const priceA = getCurrentPrice(a);
+    const priceB = getCurrentPrice(b);
+
     if (sort === "price-desc") {
-      return b.discont_price - a.discont_price;
+      return priceB - priceA;
     }
+
     if (sort === "price-asc") {
-      return a.discont_price - b.discont_price;
+      return priceA - priceB;
     }
+
     if (sort === "newest") {
       return new Date(b.createdAt) - new Date(a.createdAt);
     }
+
     return 0;
   });
 

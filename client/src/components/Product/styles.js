@@ -100,7 +100,6 @@ export const btnStyle = {
   fontSize: "1.389vw",
   lineHeight: "130%",
   textAlign: "center",
- 
   textTransform: "none",
   position: "absolute",
   bottom: "1.111vw",

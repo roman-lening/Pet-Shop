@@ -15,6 +15,9 @@ import {
 } from "./styles.js";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/basketSlice.js";
+import { addProduct } from "../../redux/slices/bagSlice.js";
 
 function Product({ product }) {
   const hasDiscount =
@@ -28,17 +31,20 @@ function Product({ product }) {
 
   const [addedBtn, setAddedBtn] = useState(false);
 
+  const dispatch = useDispatch();
+
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log("click");
     setAddedBtn(true);
+    dispatch(addItem());
+    dispatch(addProduct());
   }
 
   return (
     <Box
       component={NavLink}
-      to="/"
+      to={`/item/${product.id}`}
       sx={{
         ...cardStyle,
         "&:hover .addButton": {

@@ -10,6 +10,7 @@ import SalesPage from "./pages/salesPage";
 import ProductsPage from "./pages/productsPage";
 import ProductGroup from "./pages/ProductGroup";
 import ScrollToTop from "./components/ScrollToTop";
+import Item from "./components/Item";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sales" element={<SalesPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/productGroup/:id" element={<ProductGroup />} />
+        <Route path="/item/:id" element={<Item />} />
       </Routes>
       <Footer />
     </Box>
