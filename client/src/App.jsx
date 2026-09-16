@@ -11,6 +11,7 @@ import ProductsPage from "./pages/productsPage";
 import ProductGroup from "./pages/ProductGroup";
 import ScrollToTop from "./components/ScrollToTop";
 import Item from "./components/Item";
+import BasketPage from "./pages/basketPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/productGroup/:id" element={<ProductGroup />} />
         <Route path="/item/:id" element={<Item />} />
+        <Route path="/basket" element={<BasketPage />} />
       </Routes>
       <Footer />
     </Box>

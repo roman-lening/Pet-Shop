@@ -164,6 +164,15 @@ export const minusButtonStyle = {
   padding: 0,
 };
 
+export const plusButtonStyle = {
+  borderLeft: "0.069vw solid #ddd",
+  borderRadius: "0.417vw",
+  width: "4.028vw",
+  height: "4.028vw",
+  minWidth: 0,
+  padding: 0,
+};
+
 export const quantityTextStyle = {
   fontWeight: 600,
   fontSize: "1.389vw",

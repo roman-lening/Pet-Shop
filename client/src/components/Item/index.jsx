@@ -9,9 +9,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSales } from "../../redux/slices/salesSlice.js";
 import { getCategories } from "../../redux/slices/categoriesSlice.js";
-import { addItem } from "../../redux/slices/basketSlice.js";
+import { addProduct } from "../../redux/slices/bagSlice.js";
 import {
   breadcrumbsStyle,
+  plusButtonStyle,
   descriptionContainerStyle,
   breadcrumbButtonStyle,
   dividerStyle,
@@ -69,7 +70,16 @@ function Item() {
   function handleClick(event) {
     event.preventDefault();
     setAddedBtn(true);
-    dispatch(addItem(count));
+    dispatch(
+      addProduct({
+        id: product.id,
+        title: product.title,
+        price: currentPrice,
+        image: product.image,
+        quantity: count,
+        discont_price: product.discont_price,
+      }),
+    );
   }
 
   function minusOne() {
@@ -114,7 +124,7 @@ function Item() {
           <Button sx={breadcrumbButtonStyle}>Categories</Button>
         </NavLink>
         <Divider sx={dividerStyle} />
-        <NavLink to={`/productGroup/${category.id}`}>
+        <NavLink to={`/productGroup/${category?.id}`}>
           <Button sx={breadcrumbButtonStyle}>{category?.title}</Button>
         </NavLink>
         <Divider sx={dividerStyle} />
@@ -166,7 +176,7 @@ function Item() {
               <Button
                 onClick={plusOne}
                 disabled={addedBtn}
-                sx={minusButtonStyle}
+                sx={plusButtonStyle}
               >
                 <svg
                   width="24"

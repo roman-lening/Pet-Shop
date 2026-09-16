@@ -14,12 +14,12 @@ import {
   btnStyle,
 } from "./styles.js";
 import { NavLink } from "react-router-dom";
+import { addProduct } from "../../redux/slices/bagSlice.js";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../../redux/slices/basketSlice.js";
-import { addProduct } from "../../redux/slices/bagSlice.js";
 
 function Product({ product }) {
+  
   const hasDiscount =
     product.discont_price > 0 && product.discont_price < product.price;
 
@@ -33,15 +33,30 @@ function Product({ product }) {
 
   const dispatch = useDispatch();
 
+  if (!product) {
+
+    return null;
+
+  }
+
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
     setAddedBtn(true);
-    dispatch(addItem());
-    dispatch(addProduct());
+    dispatch(
+      addProduct({
+        id: product.id,
+        title: product.title,
+        price: hasDiscount ? product.discont_price : product.price,
+        image: product.image,
+        quantity: 1,
+        discont_price: hasDiscount ? product.price : null,
+      }),
+    );
   }
 
   return (
+
     <Box
       component={NavLink}
       to={`/item/${product.id}`}

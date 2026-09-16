@@ -42,7 +42,6 @@ export const fieldGroupStyle = {
 
 export const inputStyle = {
   width: "35.833vw",
-
   "& .MuiOutlinedInput-root": {
     height: "4.028vw",
     borderRadius: "min(0.417vw, 6px)",

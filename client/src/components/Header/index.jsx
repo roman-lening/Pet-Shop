@@ -9,7 +9,13 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Header() {
-  const countItems = useSelector((state) => state.items.countitems);
+  const products = useSelector((state) => state.items.products);
+
+  const countItems = products.reduce(
+    (total, product) => total + product.quantity,
+    0,
+  );
+
   return (
     <AppBar position="static">
       <Box sx={bigBoxStyle}>
@@ -80,7 +86,7 @@ function Header() {
             )}
           </NavLink>
         </Box>
-        <NavLink to="/basketPage">
+        <NavLink to="/basket">
           <img
             src={Basket}
             alt="Basket"
@@ -89,7 +95,9 @@ function Header() {
               position: "relative",
             }}
           />
-          <Typography sx={itemsBusket}>{countItems}</Typography>
+          {countItems > 0 && (
+            <Typography sx={itemsBusket}>{countItems}</Typography>
+          )}
         </NavLink>
       </Box>
     </AppBar>
